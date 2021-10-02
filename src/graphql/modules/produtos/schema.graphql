@@ -1,0 +1,23 @@
+type Produto {
+  id: ID!
+  nome: String
+  valor: Float
+  ativo: Boolean
+  categoria: Categoria
+  # pedidos: [Pedido!]
+}
+
+type Query {
+  produtos: [Produto!]!
+}
+
+input ProdutoCreateInput {
+  nome: String
+  valor: Float
+  ativo: Boolean
+  categoriaId: Int
+}
+
+type Mutation {
+  addProduto(data: ProdutoCreateInput!): Categoria
+}
