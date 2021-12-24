@@ -2,10 +2,12 @@
   "name": "manager-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ts-node src/index.ts -e js,ts,graphql"
+    "dev": "nodemon --exec ts-node src/index.ts -e js,ts,graphql",
+    "start": "node dist/index.js",
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +24,6 @@
     "@prisma/client": "^3.1.1",
     "apollo-server": "^3.3.0",
     "graphql": "^15.6.0",
-    "graphql-import-node": "0.0.4",
     "merge-graphql-schemas": "^1.7.8"
   }
 }

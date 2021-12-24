@@ -1,9 +1,7 @@
-import "graphql-import-node";
+import { mergeTypes } from 'merge-graphql-schemas';
+import categorias from './modules/categorias/schema';
+import produtos from './modules/produtos/schema';
 
-import { mergeTypes } from "merge-graphql-schemas";
-import categorias from "./modules/categorias/schema.graphql";
-// import products from "./modules/products/schema.graphql";
-
-const typesArray = [categorias];
+const typesArray = [categorias, produtos];
 
 export const typeDefs = mergeTypes(typesArray);

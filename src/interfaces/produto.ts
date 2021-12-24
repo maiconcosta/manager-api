@@ -3,5 +3,6 @@ export default interface Produto {
   nome: string;
   valor: number;
   ativo: boolean;
+  imagem?: string;
   categoriaId: number;
 }

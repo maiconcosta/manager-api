@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import CategoriaProduto from '../../../interfaces/categoriaProduto';
+
 const prisma = new PrismaClient();
 
 export default {

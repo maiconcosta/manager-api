@@ -3,11 +3,12 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") 
+  url      = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
@@ -16,76 +17,76 @@ model Pedido {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  cliente    Cliente     @relation(fields: [clienteId], references: [id])
-  clienteId  Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  clienteId Int
 
-  status    StatusPedido     @relation(fields: [statusId], references: [id])
-  statusId  Int
+  status   StatusPedido @relation(fields: [statusId], references: [id])
+  statusId Int
 
-  pagamento    FormaPagamento     @relation(fields: [pagamentoId], references: [id])
-  pagamentoId  Int
+  pagamento   FormaPagamento @relation(fields: [pagamentoId], references: [id])
+  pagamentoId Int
 
   produtos ProdutosPedidos[]
 }
 
 model ProdutosPedidos {
-  pedidos    Pedido     @relation(fields: [pedidoId], references: [id])
+  pedidos  Pedido @relation(fields: [pedidoId], references: [id])
   pedidoId Int
-  
-  produtos    Produto     @relation(fields: [produtoId], references: [id])
+
+  produtos  Produto @relation(fields: [produtoId], references: [id])
   produtoId Int
 
   quantidade Int
 
-  @@id([pedidoId, produtoId])
 
+  @@id([pedidoId, produtoId])
 }
 
 model StatusPedido {
-  id       Int      @id @default(autoincrement())
-  nome     String
+  id   Int    @id @default(autoincrement())
+  nome String
 
   pedido Pedido[]
 }
 
 model FormaPagamento {
-  id       Int      @id @default(autoincrement())
-  nome     String
+  id   Int    @id @default(autoincrement())
+  nome String
 
   pedido Pedido[]
 }
 
-
 model Categoria {
-  id       Int      @id @default(autoincrement())
-  nome     String
+  id   Int    @id @default(autoincrement())
+  nome String
 
   produtos Produto[]
 }
 
 model Produto {
-  id     Int     @id @default(autoincrement())
-  nome   String
-  valor  Decimal @db.Decimal(10, 2)
-  ativo Boolean @default(true)
-  categoria Categoria @relation(fields: [categoriaId], references: [id])
+  id          Int       @id @default(autoincrement())
+  nome        String
+  valor       Decimal   @db.Decimal(10, 2)
+  ativo       Boolean   @default(true)
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
   categoriaId Int
+  imagem      String?
 
   pedidos ProdutosPedidos[]
 }
 
 model Cliente {
-  id      Int      @id @default(autoincrement())
-  nome    String?
+  id       Int               @id @default(autoincrement())
+  nome     String?
   telefone String?
-  pedidos Pedido[]
+  pedidos  Pedido[]
   endereco EnderecoCliente[]
 }
 
 model EnderecoCliente {
-  id       Int      @id @default(autoincrement())
-  nome     String
+  id   Int    @id @default(autoincrement())
+  nome String
 
-  cliente Cliente @relation(fields: [clienteId], references: [id])
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
 }
