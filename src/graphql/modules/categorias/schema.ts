@@ -2,6 +2,7 @@ export default `
   type Categoria {
     id: ID!
     nome: String!
+    produtos: [Produto!]
   }
 
   type Query {

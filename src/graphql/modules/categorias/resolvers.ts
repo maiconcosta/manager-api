@@ -4,6 +4,15 @@ import CategoriaProduto from '../../../interfaces/categoriaProduto';
 const prisma = new PrismaClient();
 
 export default {
+  Categoria: {
+    produtos: (categoria: CategoriaProduto) =>
+      prisma.produto.findMany({
+        where: {
+          categoriaId: categoria.id,
+        },
+      }),
+  },
+
   Query: {
     categorias: () => prisma.categoria.findMany(),
   },
