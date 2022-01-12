@@ -84,8 +84,14 @@ model Cliente {
 }
 
 model EnderecoCliente {
-  id   Int    @id @default(autoincrement())
-  nome String
+  id          Int    @id @default(autoincrement())
+  logradouro  String
+  numero      Int
+  bairro      String
+  cidade      String
+  estado      String
+  cep         String
+  complemento String
 
   cliente   Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
