@@ -7,4 +7,5 @@ export default interface EnderecoCliente {
   estado: string;
   cep: string;
   complemento: string;
+  clienteId: number;
 }

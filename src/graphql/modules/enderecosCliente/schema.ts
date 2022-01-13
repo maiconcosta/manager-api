@@ -22,6 +22,7 @@ export default `
     estado: String
     cep: String
     complemento: String
+    clienteId: Int
   }
 
   type Mutation {

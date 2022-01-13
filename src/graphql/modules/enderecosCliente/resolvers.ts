@@ -8,7 +8,7 @@ export default {
   },
 
   Mutation: {
-    addEnderecoCliente: (_: any, args: any) =>
+    addEnderecoCliente: (_: any, args: { data: any }) =>
       prisma.enderecoCliente.create({
         data: args.data,
       }),
