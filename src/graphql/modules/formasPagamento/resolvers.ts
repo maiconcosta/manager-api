@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-import FormaPagamento from '../../../interfaces/formaPagamento';
+import { PrismaClient, FormaPagamento } from '@prisma/client';
 
 const prisma = new PrismaClient();
 

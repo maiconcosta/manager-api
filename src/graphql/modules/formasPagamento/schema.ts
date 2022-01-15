@@ -1,4 +1,6 @@
-export default `
+import { gql } from 'apollo-server';
+
+export default gql`
   type FormaPagamento {
     id: ID!
     nome: String!

@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-import StatusPedido from '../../../interfaces/statusPedido';
+import { PrismaClient, StatusPedido } from '@prisma/client';
 
 const prisma = new PrismaClient();
 

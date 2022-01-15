@@ -1,11 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-import CategoriaProduto from '../../../interfaces/categoriaProduto';
+import { PrismaClient, Categoria } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 export default {
   Categoria: {
-    produtos: (categoria: CategoriaProduto) =>
+    produtos: (categoria: Categoria) =>
       prisma.produto.findMany({
         where: {
           categoriaId: categoria.id,
@@ -18,7 +17,7 @@ export default {
   },
 
   Mutation: {
-    addCategoria: (_: any, args: { data: CategoriaProduto }) =>
+    addCategoria: (_: any, args: { data: Categoria }) =>
       prisma.categoria.create({
         data: args.data,
       }),
