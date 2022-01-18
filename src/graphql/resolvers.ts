@@ -6,6 +6,7 @@ import formasPagamento from './modules/formasPagamento/resolvers';
 import statusesPedido from './modules/statusesPedido/resolvers';
 import enderecosCliente from './modules/enderecosCliente/resolvers';
 import clientes from './modules/clientes/resolvers';
+import pedidos from './modules/pedidos/resolvers';
 
 const resolversArray = [
   categorias,
@@ -14,6 +15,7 @@ const resolversArray = [
   statusesPedido,
   enderecosCliente,
   clientes,
+  pedidos,
 ];
 
 export const resolvers = mergeResolvers(resolversArray);

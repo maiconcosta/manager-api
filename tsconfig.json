@@ -6,7 +6,8 @@
     "lib": ["esnext"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    "typeRoots": ["node_modules/@types", "src/@types"],
+    "downlevelIteration": true
   },
   "files": ["src/@types/graphql.d.ts"],
   "include": ["src/**/*"],

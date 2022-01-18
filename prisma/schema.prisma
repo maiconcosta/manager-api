@@ -13,9 +13,13 @@ generator client {
 }
 
 model Pedido {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int       @id @default(autoincrement())
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  total        Decimal   @db.Decimal(10, 2)
+  observacao   String?
+  prazoEntrega DateTime?
+
 
   cliente   Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
@@ -27,6 +31,7 @@ model Pedido {
   pagamentoId Int
 
   produtos ProdutosPedidos[]
+
 }
 
 model ProdutosPedidos {
@@ -77,21 +82,21 @@ model Produto {
 
 model Cliente {
   id       Int               @id @default(autoincrement())
-  nome     String?
-  telefone String?
+  nome     String
+  telefone String
   pedidos  Pedido[]
   endereco EnderecoCliente[]
 }
 
 model EnderecoCliente {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   logradouro  String
-  numero      Int
+  numero      Int?
   bairro      String
   cidade      String
   estado      String
   cep         String
-  complemento String
+  complemento String?
 
   cliente   Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
