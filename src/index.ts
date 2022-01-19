@@ -12,6 +12,7 @@ new ApolloServer({
     optionsSuccessStatus: 204,
     credentials: true,
   },
+  introspection: true,
 })
   .listen({ port: process.env.PORT || 4000 })
   .then(({ url }) => {
